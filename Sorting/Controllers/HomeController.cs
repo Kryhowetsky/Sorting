@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sorting.Data;
 using Sorting.Models;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Sorting.Controllers
 {
     public class HomeController : Controller
     {
-        UsersContext db;
+        private UsersContext db;
+
         public HomeController(UsersContext context)
         {
             this.db = context;
         }
+
         public async Task<IActionResult> Index(int? company, string name, int page = 1,
             SortState sortOrder = SortState.NameAsc)
         {
@@ -40,18 +41,23 @@ namespace Sorting.Controllers
                 case SortState.NameDesc:
                     users = users.OrderByDescending(s => s.Name);
                     break;
+
                 case SortState.AgeAsc:
                     users = users.OrderBy(s => s.Age);
                     break;
+
                 case SortState.AgeDesc:
                     users = users.OrderByDescending(s => s.Age);
                     break;
+
                 case SortState.CompanyAsc:
                     users = users.OrderBy(s => s.Company.Name);
                     break;
+
                 case SortState.CompanyDesc:
                     users = users.OrderByDescending(s => s.Company.Name);
                     break;
+
                 default:
                     users = users.OrderBy(s => s.Name);
                     break;
@@ -71,13 +77,6 @@ namespace Sorting.Controllers
             };
             return View(viewModel);
         }
-
-
-
-
-
-
-
 
         //public IActionResult Index()
         //{

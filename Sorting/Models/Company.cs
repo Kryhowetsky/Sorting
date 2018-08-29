@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Sorting.Models
 {
@@ -11,6 +8,7 @@ namespace Sorting.Models
         public string Name { get; set; }
 
         public List<User> Users { get; set; }
+
         public Company()
         {
             Users = new List<User>();

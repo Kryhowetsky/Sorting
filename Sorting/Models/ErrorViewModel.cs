@@ -1,5 +1,3 @@
-using System;
-
 namespace Sorting.Models
 {
     public class ErrorViewModel
